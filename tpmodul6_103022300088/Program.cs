@@ -5,12 +5,12 @@ class Program
     static void Main()
     {
         SayaTubeVideo video = new SayaTubeVideo("Tutorial Design By Contract – Gusti Agung Raka Darma Putra Kepakisan");
-        video.IncreasePlayCount(1000);
+        video.IncreasePlayCount(100000);
         video.PrintVideoDetails();
 
         try
         {
-            for (int i = 0; i < 1000; i++) // Loop untuk mempercepat overflow
+            for (int i = 0; i < 1000; i++)
             {
                 video.IncreasePlayCount(10000000);
             }
