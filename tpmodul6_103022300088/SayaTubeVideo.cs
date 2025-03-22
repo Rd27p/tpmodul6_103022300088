@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace tpmodul6_103022300088
 {
@@ -14,15 +11,28 @@ namespace tpmodul6_103022300088
 
         public SayaTubeVideo(string title)
         {
+            Debug.Assert(!string.IsNullOrEmpty(title) && title.Length <= 100, "Judul video tidak boleh null atau lebih dari 100 karakter.");
+
+            this.title = title;
             Random random = new Random();
             this.id = random.Next(10000, 99999);
-            this.title = title;
             this.playCount = 0;
         }
 
         public void IncreasePlayCount(int count)
         {
-            this.playCount += count;
+            Debug.Assert(count > 0 && count <= 10000000, "Penambahan play count harus di antara 1 dan 10.000.000.");
+            try
+            {
+                checked
+                {
+                    this.playCount += count;
+                }
+            }
+            catch (OverflowException e)
+            {
+                Console.WriteLine($"Error: {e.Message}");
+            }
         }
 
         public void PrintVideoDetails()
