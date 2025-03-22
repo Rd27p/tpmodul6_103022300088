@@ -1,6 +1,5 @@
-﻿using System;
-
-namespace tpmodul6_103022300088;
+﻿using tpmodul6_103022300088;
+using System;
 class Program
 {
     static void Main()
@@ -8,5 +7,18 @@ class Program
         SayaTubeVideo video = new SayaTubeVideo("Tutorial Design By Contract – Gusti Agung Raka Darma Putra Kepakisan");
         video.IncreasePlayCount(1000);
         video.PrintVideoDetails();
+
+        try
+        {
+            for (int i = 0; i < 1000; i++) // Loop untuk mempercepat overflow
+            {
+                video.IncreasePlayCount(10000000);
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Terjadi kesalahan: {e.Message}");
+        }
     }
+}
 }
