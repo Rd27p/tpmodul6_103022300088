@@ -1,2 +1,12 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using System;
+
+namespace tpmodul6_103022300088;
+class Program
+{
+    static void Main()
+    {
+        SayaTubeVideo video = new SayaTubeVideo("Tutorial Design By Contract – Gusti Agung Raka Darma Putra Kepakisan");
+        video.IncreasePlayCount(10);
+        video.PrintVideoDetails();
+    }
+}
